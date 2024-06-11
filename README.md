@@ -16,6 +16,7 @@ If you want to use it with ella, you may need to modify the components appropria
 (In addition, we believe that this method may also be applicable in dit, and we will consider supporting it for the upcoming sd3 after determining the effect)
 
 In principle, this project can support most components in the comfyui ecosystem, but the adapter and others have not tested it.
+This project does not include the processing of strings such as style prompts, nor the process of writing text on pictures.
 ## Workflow
 We have specially prepared usage examples, including examples of using lora. In order to simplify the demonstration, our examples are simple and you do not need to install other plug-ins.
 ![story_with_lora](./image/story_lora.png)

@@ -9,6 +9,7 @@ SeaArtCharactorPrompt SeaArtAppendPrompt只是对string的简单拼接，您当�
 如果要搭配ella使用，您可能需要适当的修改组件，抑或是点赞给我们留下issue，我们会在后续空余的时间来考虑处理所有的issue，兼容comfyui中各种生态，喜欢本项目请给我们点赞，您的鼓励是我们更新的动力
 (另外我们认为在dit中可能该方法同样适用，对于即将发行的sd3在确定效果后我们会考虑支持)
 原则上本项目可以支持comfyui生态中的绝大部分组件，但是adapter等并没有做测试
+本项目不包含style prompt等string的处理，也不包含在图片上写上文字的流程
 ## Workflow
 我们特意准备了使用例子，包含使用lora的例子，为了简化演示，我们例子简单，您无需安装其他插件
 ![story_with_lora](./image/story_lora.png)
