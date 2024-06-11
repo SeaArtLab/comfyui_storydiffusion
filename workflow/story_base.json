@@ -1,0 +1,1123 @@
+{
+  "last_node_id": 29,
+  "last_link_id": 71,
+  "nodes": [
+    {
+      "id": 11,
+      "type": "SeaArtCharactorPrompt",
+      "pos": [
+        -84,
+        -241
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            10,
+            11,
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtCharactorPrompt"
+      },
+      "widgets_values": [
+        "a cute girl, blue hair, red cloth "
+      ]
+    },
+    {
+      "id": 13,
+      "type": "SeaArtAppendPrompt",
+      "pos": [
+        427,
+        282
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "charactor_prompt",
+          "type": "STRING",
+          "link": 11,
+          "widget": {
+            "name": "charactor_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            17
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtAppendPrompt"
+      },
+      "widgets_values": [
+        "",
+        "in the park"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "SeaArtAppendPrompt",
+      "pos": [
+        421,
+        -54
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "charactor_prompt",
+          "type": "STRING",
+          "link": 10,
+          "widget": {
+            "name": "charactor_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            18
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtAppendPrompt"
+      },
+      "widgets_values": [
+        "",
+        "in the bed"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2104,
+        637
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            25
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        2084,
+        262
+      ],
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 48
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 49
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        1076421734178196,
+        "randomize",
+        25,
+        8,
+        "dpmpp_2m_sde_gpu",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 14,
+      "type": "SeaArtAppendPrompt",
+      "pos": [
+        423,
+        574
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "charactor_prompt",
+          "type": "STRING",
+          "link": 12,
+          "widget": {
+            "name": "charactor_prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            16
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtAppendPrompt"
+      },
+      "widgets_values": [
+        "",
+        "read book"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "CLIPTextEncode",
+      "pos": [
+        957,
+        -50
+      ],
+      "size": {
+        "0": 389.5223388671875,
+        "1": 74.33411407470703
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 64
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 18,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            40
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 19,
+      "type": "CLIPTextEncode",
+      "pos": [
+        958,
+        266
+      ],
+      "size": {
+        "0": 389.5223388671875,
+        "1": 74.33411407470703
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 67
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 17,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CLIPTextEncode",
+      "pos": [
+        960,
+        589
+      ],
+      "size": {
+        "0": 389.5223388671875,
+        "1": 74.33411407470703
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 68
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 16,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            42
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 23,
+      "type": "CLIPTextEncode",
+      "pos": [
+        976,
+        904
+      ],
+      "size": {
+        "0": 389.5223388671875,
+        "1": 74.33411407470703
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 69
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 28,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            44
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 24,
+      "type": "CLIPTextEncode",
+      "pos": [
+        970,
+        1130
+      ],
+      "size": {
+        "0": 389.5223388671875,
+        "1": 74.33411407470703
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 71
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 27,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            45
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 25,
+      "type": "CLIPTextEncode",
+      "pos": [
+        970,
+        1351
+      ],
+      "size": {
+        "0": 389.5223388671875,
+        "1": 74.33411407470703
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 70
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 29,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            46
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 27,
+      "type": "SeaArtMergeStoryCondition",
+      "pos": [
+        1551,
+        217
+      ],
+      "size": {
+        "0": 342.5999755859375,
+        "1": 126
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 65
+        },
+        {
+          "name": "conditioning_1",
+          "type": "CONDITIONING",
+          "link": 40
+        },
+        {
+          "name": "conditioning_2",
+          "type": "CONDITIONING",
+          "link": 41
+        },
+        {
+          "name": "conditioning_3",
+          "type": "CONDITIONING",
+          "link": 42
+        },
+        {
+          "name": "conditioning_4",
+          "type": "CONDITIONING",
+          "link": null
+        },
+        {
+          "name": "conditioning_5",
+          "type": "CONDITIONING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            48
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtMergeStoryCondition"
+      }
+    },
+    {
+      "id": 22,
+      "type": "SeaArtAppendPrompt",
+      "pos": [
+        420,
+        883
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            27,
+            28,
+            29
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtAppendPrompt"
+      },
+      "widgets_values": [
+        "",
+        "water,bad"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SeaArtApplyStory",
+      "pos": [
+        1603,
+        49
+      ],
+      "size": {
+        "0": 210,
+        "1": 106
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtApplyStory"
+      },
+      "widgets_values": [
+        3,
+        1024,
+        1024
+      ]
+    },
+    {
+      "id": 28,
+      "type": "SeaArtMergeStoryCondition",
+      "pos": [
+        1561,
+        1047
+      ],
+      "size": {
+        "0": 342.5999755859375,
+        "1": 126
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 66
+        },
+        {
+          "name": "conditioning_1",
+          "type": "CONDITIONING",
+          "link": 44
+        },
+        {
+          "name": "conditioning_2",
+          "type": "CONDITIONING",
+          "link": 45
+        },
+        {
+          "name": "conditioning_3",
+          "type": "CONDITIONING",
+          "link": 46
+        },
+        {
+          "name": "conditioning_4",
+          "type": "CONDITIONING",
+          "link": null
+        },
+        {
+          "name": "conditioning_5",
+          "type": "CONDITIONING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            49
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeaArtMergeStoryCondition"
+      }
+    },
+    {
+      "id": 21,
+      "type": "PreviewImage",
+      "pos": [
+        2110,
+        757
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 25
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1584,
+        549
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -696,
+        174
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            63
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "Dark_Sushi_Mix.safetensors"
+      ]
+    }
+  ],
+  "links": [
+    [
+      2,
+      5,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      7,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      10,
+      11,
+      0,
+      12,
+      0,
+      "STRING"
+    ],
+    [
+      11,
+      11,
+      0,
+      13,
+      0,
+      "STRING"
+    ],
+    [
+      12,
+      11,
+      0,
+      14,
+      0,
+      "STRING"
+    ],
+    [
+      14,
+      16,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      16,
+      14,
+      0,
+      20,
+      1,
+      "STRING"
+    ],
+    [
+      17,
+      13,
+      0,
+      19,
+      1,
+      "STRING"
+    ],
+    [
+      18,
+      12,
+      0,
+      18,
+      1,
+      "STRING"
+    ],
+    [
+      25,
+      8,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      22,
+      0,
+      24,
+      1,
+      "STRING"
+    ],
+    [
+      28,
+      22,
+      0,
+      23,
+      1,
+      "STRING"
+    ],
+    [
+      29,
+      22,
+      0,
+      25,
+      1,
+      "STRING"
+    ],
+    [
+      40,
+      18,
+      0,
+      27,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      41,
+      19,
+      0,
+      27,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      42,
+      20,
+      0,
+      27,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      44,
+      23,
+      0,
+      28,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      45,
+      24,
+      0,
+      28,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      46,
+      25,
+      0,
+      28,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      48,
+      27,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      49,
+      28,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      63,
+      4,
+      0,
+      16,
+      0,
+      "MODEL"
+    ],
+    [
+      64,
+      4,
+      1,
+      18,
+      0,
+      "CLIP"
+    ],
+    [
+      65,
+      4,
+      1,
+      27,
+      0,
+      "CLIP"
+    ],
+    [
+      66,
+      4,
+      1,
+      28,
+      0,
+      "CLIP"
+    ],
+    [
+      67,
+      4,
+      1,
+      19,
+      0,
+      "CLIP"
+    ],
+    [
+      68,
+      4,
+      1,
+      20,
+      0,
+      "CLIP"
+    ],
+    [
+      69,
+      4,
+      1,
+      23,
+      0,
+      "CLIP"
+    ],
+    [
+      70,
+      4,
+      1,
+      25,
+      0,
+      "CLIP"
+    ],
+    [
+      71,
+      4,
+      1,
+      24,
+      0,
+      "CLIP"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.513158118230707,
+      "offset": [
+        840.0659744450127,
+        339.40740507128805
+      ]
+    }
+  },
+  "version": 0.4
+}
