@@ -4,6 +4,7 @@ import comfy.model_management as model_management
 import torch
 import comfy.samplers
 import nodes
+import copy
 
 class SeaArtApplyStory:
     @classmethod
@@ -13,14 +14,20 @@ class SeaArtApplyStory:
             "id_length": ("INT", {"default": 3, "min": 0, "max": 10, "step": 1}),
             "width": ("INT", {"default": 1024, "min": 64, "max": 4096, "step": 1}),
             "height": ("INT", {"default": 1024, "min": 64, "max": 4096, "step": 1}),
+            "same": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step":0.01, "round": 0.01}),
         }}
     RETURN_TYPES = ("MODEL",)
     FUNCTION = "apply"
 
     CATEGORY = "SeaArt"
 
-    def apply(self, model, id_length, width, height):
+    def apply(self, model, id_length, width, height, same):
+        import gc
+        import comfy.model_management as model_management
+        gc.collect()
+        model_management.soft_empty_cache(True)
         model = model.clone()
+        model.model = copy.deepcopy(model.model)
         story_attention.width = width
         story_attention.height = height
         story_attention.total_count = 0
@@ -29,6 +36,8 @@ class SeaArtApplyStory:
         story_attention.mask1024, story_attention.mask4096 = story_attention.cal_attn_mask_xl(
         story_attention.total_length,story_attention.id_length,story_attention.sa32,story_attention.sa64,story_attention.height,story_attention.width,device=model_management.get_torch_device(),dtype= torch.float16)
         story_attention.write = True
+        story_attention.sa32 = same
+        story_attention.sa64 = same
         for time_step in model.model.diffusion_model.output_blocks:
             #block是否包含上采样
             for block in time_step:
@@ -207,6 +216,23 @@ class SeaArtStoryInfKSampler:
         story_attention.cur_step = 0
         latent = nodes.KSampler().sample(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise)[0]
         return (latent,model,)
+    
+class SeaArtFirstImage:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": 
+                    {"image": ("IMAGE", ),},
+                }
+    
+
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "do"
+
+    CATEGORY = "SeaArt"
+
+    def do(self,image):
+        image = image[0]
+        return (image.unsqueeze(0),)
 
 class SeaArtStoryInfKSamplerAdvanced:
     @classmethod

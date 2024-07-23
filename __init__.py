@@ -9,6 +9,7 @@ NODE_CLASS_MAPPINGS = {
     "SeaArtStoryKSamplerAdvanced": nodes.SeaArtStoryKSamplerAdvanced,
     "SeaArtStoryInfKSampler": nodes.SeaArtStoryInfKSampler,
     "SeaArtStoryInfKSamplerAdvanced": nodes.SeaArtStoryInfKSamplerAdvanced,
+    "SeaArtFirstImage": nodes.SeaArtFirstImage,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -19,5 +20,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SeaArtStoryKSampler": "SeaArtStoryKSampler",
     "SeaArtStoryKSamplerAdvanced": "SeaArtStoryKSamplerAdvanced",
     "SeaArtStoryInfKSampler": "SeaArtStoryInfKSampler",
-    "SeaArtStoryInfKSamplerAdvanced": "SeaArtStoryInfKSamplerAdvanced"
+    "SeaArtStoryInfKSamplerAdvanced": "SeaArtStoryInfKSamplerAdvanced",
+    "SeaArtFirstImage": "SeaArtFirstImage"
 }
